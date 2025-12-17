@@ -9,19 +9,19 @@ import java.util.List;
 @RestController
 @RequestMapping("/cards")
 public class CardsController {
-    private final CardRepository _cardRepository;
+    private final CardRepository cardRepository;
 
-    public CardsController(CardRepository _cardRepository) {
-        this._cardRepository = _cardRepository;
+    public CardsController(CardRepository cardRepository) {
+        this.cardRepository = cardRepository;
     }
 
     @PostMapping
     public Card create(@RequestBody Card card){
-        return _cardRepository.save(card);
+        return cardRepository.save(card);
     }
 
     @GetMapping
     public List<Card> list(){
-        return _cardRepository.findAll();
+        return cardRepository.findAll();
     }
 }
