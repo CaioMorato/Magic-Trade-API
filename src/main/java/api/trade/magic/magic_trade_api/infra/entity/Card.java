@@ -19,7 +19,7 @@ public class Card {
     @Column(name = "set_number")
     private String setNumber;
     @Column(name = "base_price")
-    private BigDecimal basePrice;
+    private Integer basePrice;
     @Column(name = "image_url")
     private String imageURL;
     @Column(name = "created_at")
@@ -65,11 +65,11 @@ public class Card {
         this.setNumber = setNumber;
     }
 
-    public BigDecimal getBasePrice() {
+    public Integer getBasePrice() {
         return basePrice;
     }
 
-    public void setBasePrice(BigDecimal basePrice) {
+    public void setBasePrice(Integer basePrice) {
         this.basePrice = basePrice;
     }
 
