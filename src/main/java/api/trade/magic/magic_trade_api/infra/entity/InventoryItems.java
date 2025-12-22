@@ -16,7 +16,7 @@ public class InventoryItems {
     public Inventory inventory;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name="card_id", nullable = false)
+    @JoinColumn(name="card_id", nullable = false)
     public Card card;
 
     public Integer quantity;
