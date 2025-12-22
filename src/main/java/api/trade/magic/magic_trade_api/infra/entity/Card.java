@@ -7,7 +7,7 @@ import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name="card")
+@Table(name="cards")
 public class Card {
     @Id
     @GeneratedValue()
