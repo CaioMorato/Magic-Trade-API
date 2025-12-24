@@ -21,6 +21,7 @@ public class Inventory {
     @JoinColumn(name="card_id", nullable = false)
     private Card card;
 
+    private Integer quantity;
 
     @Column(name="created_at")
     private OffsetDateTime createdAt;
@@ -47,6 +48,14 @@ public class Inventory {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public OffsetDateTime getCreatedAt() {
