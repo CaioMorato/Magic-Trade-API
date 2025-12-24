@@ -1,33 +1,87 @@
-HELP.md
-target/
-.mvn/wrapper/maven-wrapper.jar
+# Maven / Java
+/target/
+/.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
+# Package Files
+*.jar
+*.war
+*.ear
 
-### IntelliJ IDEA ###
-.idea
-*.iws
+# IDEs
+/.idea/
 *.iml
-*.ipr
+*.iws
+.classpath
+.project
+.settings/
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
+# VS Code
 .vscode/
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary
+*~
+*.swp
+
+# Build
+/build/
+/out/
+
+# Spring Boot
+spring.log
+
+# Environment / secrets
+.env
+*.env
+credentials.properties
+secrets.yml
+application-local.yml
+application-*.local.yml
+# Keep application.yml in source control by default; if you'd rather not, uncomment the next line
+# src/main/resources/application.yml
+
+# Keystores
+*.jks
+*.keystore
+
+# Generated sources
+/generated-sources/
+
+# Test output
+/test-output/
+
+# Logs from container/runtime
+docker-compose.override.yml
+
+# Misc
+*.class
+
+# IntelliJ caches (safer to ignore)
+.idea/
+*.iml
+
+# Mac/Windows metadata
+.DS_Store
+Thumbs.db
+
+# Node (if frontend present)
+node_modules/
+npm-debug.log
+
+# Temporary files created by editors
+*.sw?
+*.kate-swp
+
+# Flyway - migrations are source files, so keep them
+
+# End of .gitignore
+

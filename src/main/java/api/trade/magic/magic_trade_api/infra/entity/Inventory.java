@@ -7,7 +7,9 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name="inventory")
+@Table(name="inventory", uniqueConstraints = {
+    @UniqueConstraint(name = "uk_inventory_user_card", columnNames = {"user_id", "card_id"})
+})
 public class Inventory {
     @Id
     @GeneratedValue()
