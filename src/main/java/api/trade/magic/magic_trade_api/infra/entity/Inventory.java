@@ -13,14 +13,25 @@ public class Inventory {
     @GeneratedValue()
     private UUID id;
 
-    private String name;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id", nullable = false)
     private User user;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="card_id", nullable = false)
+    private Card card;
+
+
     @Column(name="created_at")
     private OffsetDateTime createdAt;
+
+    public Card getCard() {
+        return card;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
+    }
 
     public UUID getId() {
         return id;
@@ -28,14 +39,6 @@ public class Inventory {
 
     public void setId(UUID id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public User getUser() {
