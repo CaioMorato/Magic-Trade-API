@@ -6,8 +6,8 @@ import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name="users")
-public class User {
+@Table(name="users", uniqueConstraints = @UniqueConstraint(name = "uk_email", columnNames = {"email"}))
+public class UserEntity {
     @Id
     @GeneratedValue()
     private UUID id;
@@ -21,36 +21,36 @@ public class User {
         return id;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public Integer getBalance() {
         return balance;
     }
 
-    public void setBalance(Integer balance) {
-        this.balance = balance;
-    }
-
     public OffsetDateTime getCreatedAt() {
         return createdAt;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setBalance(Integer balance) {
+        this.balance = balance;
     }
 
     public void setCreatedAt(OffsetDateTime createdAt) {

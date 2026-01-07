@@ -1,8 +1,8 @@
 CREATE TABLE users (
     id UUID PRIMARY KEY,
-    name VARCHAR(30),
-    email VARCHAR(50),
-    balance INT,
+    name VARCHAR(30) NOT NULL,
+    email VARCHAR(50) UNIQUE NOT NULL,
+    balance INT DEFAULT 0,
     created_at TIMESTAMPTZ DEFAULT now()
 );
 
