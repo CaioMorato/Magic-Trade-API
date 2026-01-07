@@ -1,5 +1,5 @@
 CREATE TABLE users (
-    id UUID PRIMARY KEY,
+    id UUID PRIMARY KEY DEFAULT uuidv7(),
     name VARCHAR(30) NOT NULL,
     email VARCHAR(50) UNIQUE NOT NULL,
     balance INT DEFAULT 0,
