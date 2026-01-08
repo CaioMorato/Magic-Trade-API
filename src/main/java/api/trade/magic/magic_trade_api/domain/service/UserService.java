@@ -5,6 +5,7 @@ import api.trade.magic.magic_trade_api.domain.exception.UserNotFoundException;
 import api.trade.magic.magic_trade_api.domain.model.User;
 import api.trade.magic.magic_trade_api.domain.repository.UserRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
@@ -23,6 +24,7 @@ public class UserService {
      * @return User criado e persistido
      * @throws EmailAlreadyExistsException se email já existe
      */
+    @Transactional
     public User createUser(String name, String email) {
         if (userRepository.existsByEmail(email)) {
             throw new EmailAlreadyExistsException(email);
@@ -40,6 +42,21 @@ public class UserService {
     public User getUserById(UUID id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException(id));
+    }
+
+    /**
+     * Adicionar saldo ao usuário.
+     * @param id UUID do usuário
+     * @param amount Valor a adicionar (deve ser positivo)
+     * @return User com saldo atualizado
+     * @throws UserNotFoundException se usuário não encontrado
+     */
+    @Transactional
+    public User addBalance(UUID id, Integer amount) {
+        User user = userRepository.findByIdForUpdate(id)
+                .orElseThrow(() -> new UserNotFoundException(id));
+        user.addBalance(amount);
+        return userRepository.save(user);
     }
 }
 

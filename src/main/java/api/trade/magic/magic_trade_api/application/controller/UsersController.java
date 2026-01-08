@@ -1,6 +1,7 @@
 package api.trade.magic.magic_trade_api.application.controller;
 
-import api.trade.magic.magic_trade_api.application.controller.user.dto.user.CreateUserRequest;
+import api.trade.magic.magic_trade_api.application.controller.user.dto.CreateUserRequest;
+import api.trade.magic.magic_trade_api.application.controller.user.dto.UpdateBalanceRequest;
 import api.trade.magic.magic_trade_api.application.controller.user.dto.UserResponse;
 import api.trade.magic.magic_trade_api.domain.model.User;
 import api.trade.magic.magic_trade_api.domain.service.UserService;
@@ -39,6 +40,13 @@ public class UsersController {
     @GetMapping("/{id}")
     public ResponseEntity<UserResponse> getUserById(@PathVariable UUID id) {
         User user = userService.getUserById(id);
+        return ResponseEntity.ok(toResponse(user));
+    }
+
+    @PatchMapping("/{id}/balance/add")
+    public ResponseEntity<UserResponse> addBalance(@PathVariable UUID id,
+                                                    @Valid @RequestBody UpdateBalanceRequest request) {
+        User user = userService.addBalance(id, request.getAmount());
         return ResponseEntity.ok(toResponse(user));
     }
 

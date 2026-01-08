@@ -7,7 +7,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE inventory (
-    id UUID PRIMARY KEY,
+    id UUID PRIMARY KEY DEFAULT uuidv7(),
     user_id UUID NOT NULL,
     card_id UUID NOT NULL,
     quantity INT DEFAULT 0,

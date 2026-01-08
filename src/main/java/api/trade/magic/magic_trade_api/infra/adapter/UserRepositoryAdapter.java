@@ -5,6 +5,7 @@ import api.trade.magic.magic_trade_api.domain.repository.UserRepository;
 import api.trade.magic.magic_trade_api.infra.mapper.UserMapper;
 import api.trade.magic.magic_trade_api.infra.repository.JPAUserRepository;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -41,6 +42,7 @@ public class UserRepositoryAdapter  implements UserRepository {
     }
 
     @Override
+    @Transactional
     public User save(User user) {
         var entity = userMapper.toEntity(user);
         var savedEntity = jpaUserRepository.save(entity);

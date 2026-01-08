@@ -1,4 +1,4 @@
-package api.trade.magic.magic_trade_api.application.controller.user.dto.user;
+package api.trade.magic.magic_trade_api.application.controller.user.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
