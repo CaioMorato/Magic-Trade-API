@@ -27,7 +27,6 @@ public class UserMapper {
         }
 
         UserEntity userEntity = new UserEntity();
-        userEntity.setId(userDomain.getId());
         userEntity.setName(userDomain.getName());
         userEntity.setEmail(userDomain.getEmail());
         userEntity.setBalance(userDomain.getBalance());

@@ -12,7 +12,7 @@ public final class User {
     private final OffsetDateTime createdAt;
 
     private User(UUID id, String name, String email, Integer balance, OffsetDateTime createdAt) {
-        this.id = Objects.requireNonNull(id, "Id não pode ser nulo.");
+        this.id = id; // ID pode ser nulo ao criar novo usuário (banco gerará)
         this.name = name;
         this.email = Objects.requireNonNull(email, "Email não pode ser nulo.");
         this.balance = Objects.requireNonNullElse(balance, 0);
@@ -24,7 +24,7 @@ public final class User {
         String n = normalizeName(name);
         String e = normalizeEmail(email);
         if (balance == null || balance < 0) throw new IllegalArgumentException("Saldo não pode ser nulo ou negativo.");
-        return new User(UUID.randomUUID(), n, e, balance, OffsetDateTime.now());
+        return new User(null, n, e, balance, OffsetDateTime.now()); // ID null - banco gerará
     }
 
     // Criar usuário com saldo zero

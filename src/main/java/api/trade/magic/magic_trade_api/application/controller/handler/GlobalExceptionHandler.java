@@ -7,6 +7,9 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,6 +24,8 @@ import java.util.Map;
 @ControllerAdvice
 @Order(2)
 public class GlobalExceptionHandler {
+
+    private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     /**
      * Trata erros de validação de entrada (DTOs com @Valid).
@@ -47,9 +52,20 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, String>> handleGenericException(Exception ex) {
+        log.error("Unexpected error", ex);
         Map<String, String> response = new HashMap<>();
         response.put("error", "Erro interno do servidor");
         response.put("code", "INTERNAL_SERVER_ERROR");
+        response.put("message", ex.getMessage());
+        response.put("trace", getStackTrace(ex));
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+    }
+
+    private String getStackTrace(Exception ex) {
+        StringBuilder sb = new StringBuilder();
+        for (StackTraceElement element : ex.getStackTrace()) {
+            sb.append(element.toString()).append("\n");
+        }
+        return sb.toString();
     }
 }

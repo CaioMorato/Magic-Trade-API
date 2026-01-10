@@ -1,15 +1,19 @@
 package api.trade.magic.magic_trade_api.infra.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Entity
+@DynamicInsert
 @Table(name="users", uniqueConstraints = @UniqueConstraint(name = "uk_email", columnNames = {"email"}))
 public class UserEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "uuid DEFAULT uuidv7()")
     private UUID id;
     private String name;
     private String email;
