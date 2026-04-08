@@ -15,7 +15,7 @@ public class Offer {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name= "seller_id", nullable = false)
-    public User seller;
+    public UserEntity seller;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name= "card_id", nullable = false)
@@ -39,11 +39,11 @@ public class Offer {
         this.id = id;
     }
 
-    public User getSeller() {
+    public UserEntity getSeller() {
         return seller;
     }
 
-    public void setSeller(User seller) {
+    public void setSeller(UserEntity seller) {
         this.seller = seller;
     }
 

@@ -10,16 +10,16 @@ import java.util.UUID;
 public class Transaction {
 
     @Id
-    @GeneratedValue()
+    @GeneratedValue(strategy = GenerationType.UUID)
     public UUID id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "seller_id", nullable = false)
-    public User seller;
+    public UserEntity seller;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "buyer_id", nullable = false)
-    public User buyer;
+    public UserEntity buyer;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "offer_id")
@@ -41,19 +41,19 @@ public class Transaction {
         this.id = id;
     }
 
-    public User getSeller() {
+    public UserEntity getSeller() {
         return seller;
     }
 
-    public void setSeller(User seller) {
+    public void setSeller(UserEntity seller) {
         this.seller = seller;
     }
 
-    public User getBuyer() {
+    public UserEntity getBuyer() {
         return buyer;
     }
 
-    public void setBuyer(User buyer) {
+    public void setBuyer(UserEntity buyer) {
         this.buyer = buyer;
     }
 

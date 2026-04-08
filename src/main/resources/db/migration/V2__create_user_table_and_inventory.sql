@@ -1,13 +1,13 @@
 CREATE TABLE users (
-    id UUID PRIMARY KEY,
-    name VARCHAR(30),
-    email VARCHAR(50),
-    balance INT,
+    id UUID PRIMARY KEY DEFAULT uuidv7(),
+    name VARCHAR(30) NOT NULL,
+    email VARCHAR(50) UNIQUE NOT NULL,
+    balance INT DEFAULT 0,
     created_at TIMESTAMPTZ DEFAULT now()
 );
 
 CREATE TABLE inventory (
-    id UUID PRIMARY KEY,
+    id UUID PRIMARY KEY DEFAULT uuidv7(),
     user_id UUID NOT NULL,
     card_id UUID NOT NULL,
     quantity INT DEFAULT 0,
